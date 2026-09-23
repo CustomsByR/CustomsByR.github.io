@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rug Lord — Hand-Tufted Custom Rugs</title>
+<meta name="description" content="Hand-tufted custom rugs and wall art. Portraits, pets, and moments — tufted by hand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15100F;
+    --surface:#1E1613;
+    --surface-2:#271C18;
+    --line: rgba(237,227,211,0.12);
+    --maroon:#7A2331;
+    --maroon-light:#9C3A4A;
+    --gold:#C89B3C;
+    --cream:#EDE3D3;
+    --muted:#9C8C7C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* Nav */
+  header{
+    position:sticky; top:0; z-index:10;
+    background:rgba(21,16,15,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.3rem;
+    letter-spacing:0.01em;
+  }
+  .logo span{color:var(--gold);}
+  .nav-links{display:flex; gap:32px; align-items:center; font-size:0.95rem;}
+  .nav-links a{text-decoration:none; color:var(--muted); transition:color .2s;}
+  .nav-links a:hover{color:var(--cream);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 20px; border-radius:2px;
+    background:var(--maroon); color:var(--cream);
+    text-decoration:none; font-size:0.92rem; font-weight:500;
+    border:1px solid var(--maroon);
+    transition:background .2s, border-color .2s;
+  }
+  .btn:hover{background:var(--maroon-light); border-color:var(--maroon-light);}
+  .btn-outline{
+    background:transparent; border:1px solid var(--line); color:var(--cream);
+  }
+  .btn-outline:hover{border-color:var(--gold); color:var(--gold);}
+
+  /* Hero */
+  .hero{
+    padding:100px 0 80px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-40%; right:-10%;
+    width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle, rgba(122,35,49,0.35), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; max-width:700px;}
+  .hero h1{
+    font-size:clamp(2.4rem, 5.5vw, 4rem);
+    color:var(--cream);
+  }
+  .hero p.lead{
+    margin-top:22px; font-size:1.15rem; color:var(--muted);
+    max-width:520px;
+  }
+  .hero-actions{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+
+  .thread-rule{
+    height:2px; width:64px; background:var(--gold); margin-bottom:24px;
+    border-radius:1px;
+  }
+
+  /* Strip */
+  .strip{
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .strip-inner{
+    max-width:1120px; margin:0 auto; padding:36px 28px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .strip-item{font-size:0.92rem; color:var(--muted);}
+  .strip-item strong{display:block; color:var(--cream); font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; margin-bottom:4px;}
+
+  /* Catalogue */
+  .section{padding:90px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:48px; gap:24px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.8rem,3.5vw,2.4rem);}
+  .section-head p{color:var(--muted); max-width:400px; margin:0;}
+
+  .grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    overflow:hidden;
+    transition:border-color .2s;
+  }
+  .card:hover{border-color:rgba(200,155,60,0.4);}
+  .card-media{
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+    background:var(--surface-2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card-media img{width:100%; height:100%; object-fit:cover;}
+  .card-media .placeholder-tag{
+    position:absolute; bottom:10px; left:10px;
+    font-size:0.68rem; color:var(--muted);
+    background:rgba(21,16,15,0.75); padding:4px 8px; border-radius:2px;
+    border:1px solid var(--line);
+  }
+  .card-body{padding:22px;}
+  .card-body h3{font-size:1.15rem; margin-bottom:8px;}
+  .card-body .desc{font-size:0.9rem; color:var(--muted); margin-bottom:16px; min-height:42px;}
+  .card-footer{
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .price{font-family:'Fraunces',serif; font-weight:600; color:var(--gold); font-size:1.1rem;}
+  .enquire{
+    font-size:0.85rem; text-decoration:none; color:var(--cream);
+    border-bottom:1px solid var(--gold); padding-bottom:2px;
+  }
+
+  /* Process */
+  .process{
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .process-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+  }
+  .process-visual{
+    aspect-ratio:1; background:var(--surface-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .process-visual svg{width:70%; height:70%;}
+  .process-copy p{color:var(--muted); margin-top:16px; max-width:440px;}
+  .steps{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:16px;}
+  .steps li{
+    display:grid; grid-template-columns:28px 1fr; gap:14px; font-size:0.95rem;
+    color:var(--muted);
+  }
+  .steps li b{color:var(--cream); font-weight:500;}
+  .step-mark{
+    width:28px; height:28px; border:1px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:0.75rem;
+    color:var(--gold); font-family:'Fraunces',serif;
+  }
+
+  /* Footer */
+  footer{padding:64px 0 40px;}
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px;
+    border-top:1px solid var(--line); padding-top:40px;
+  }
+  footer h3{font-size:1.4rem; margin-bottom:12px;}
+  footer p{color:var(--muted); max-width:340px; font-size:0.92rem;}
+  .footer-links{display:flex; gap:40px; flex-wrap:wrap;}
+  .footer-col h4{
+    font-size:0.78rem; color:var(--muted); font-weight:500; margin-bottom:12px;
+    text-transform:none;
+  }
+  .footer-col a{
+    display:block; color:var(--cream); text-decoration:none; font-size:0.92rem;
+    margin-bottom:8px; opacity:0.85;
+  }
+  .footer-col a:hover{opacity:1; color:var(--gold);}
+  .footer-bottom{
+    margin-top:48px; padding-top:24px; border-top:1px solid var(--line);
+    font-size:0.8rem; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+
+  @media (max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .strip-inner{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:1fr;}
+    .nav-links{gap:18px;}
+  }
+  @media (max-width:600px){
+    .grid{grid-template-columns:1fr;}
+    .strip-inner{grid-template-columns:1fr 1fr;}
+    nav{padding:16px 20px;}
+    .nav-links a:not(.btn){display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">RUG <span>LORD</span></div>
+    <div class="nav-links">
+      <a href="#catalogue">Catalogue</a>
+      <a href="#process">Process</a>
+      <a href="https://www.instagram.com/ruglord.in" target="_blank" rel="noopener" class="btn">Follow @ruglord.in</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="thread-rule"></div>
+    <h1>Every thread remembers something.</h1>
+    <p class="lead">Hand-tufted rugs and wall hangings, made to order — a wedding portrait, a pet who won't sit still, a moment worth keeping on your wall.</p>
+    <div class="hero-actions">
+      <a href="#catalogue" class="btn">View the catalogue</a>
+      <a href="https://www.instagram.com/ruglord.in" target="_blank" rel="noopener" class="btn btn-outline">See our work on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <div class="strip-item"><strong>Custom portraits</strong>Couples, families, pets — from a photo you send us</div>
+    <div class="strip-item"><strong>Hand-tufted</strong>Every piece made by hand, not machine-woven</div>
+    <div class="strip-item"><strong>Wall or floor</strong>Framed wall art or a rug for the ground</div>
+    <div class="strip-item"><strong>Ships worldwide</strong>Packed and shipped wherever you are</div>
+  </div>
+</div>
+
+<section class="section" id="catalogue">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>The catalogue</h2>
+        <p>A running collection — new pieces added as they're finished.</p>
+      </div>
+    </div>
+    <div class="grid" id="product-grid"></div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap section">
+    <div class="process-grid">
+      <div class="process-visual">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 100 Q 60 40, 100 100 T 180 100" stroke="#C89B3C" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 120 Q 60 60, 100 120 T 180 120" stroke="#7A2331" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+          <path d="M20 80 Q 60 20, 100 80 T 180 80" stroke="#EDE3D3" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+        </svg>
+      </div>
+      <div class="process-copy">
+        <div class="thread-rule"></div>
+        <h2>From photo to rug</h2>
+        <p>Every piece starts with something real — a picture, a story, a face. It's sketched, punched by hand with a tufting gun, then trimmed, sealed and finished.</p>
+        <ul class="steps">
+          <li><span class="step-mark">1</span><span><b>Send a photo.</b> A portrait, a pet, or an idea you want reworked into thread.</span></li>
+          <li><span class="step-mark">2</span><span><b>We sketch it.</b> You approve the design and size before any yarn is touched.</span></li>
+          <li><span class="step-mark">3</span><span><b>Hand-tufted.</b> Punched, sheared and finished by hand — usually 2–3 weeks.</span></li>
+          <li><span class="step-mark">4</span><span><b>Shipped to you.</b> Rolled, packed and sent worldwide.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>RUG <span style="color:var(--gold)">LORD</span></h3>
+        <p>Custom hand-tufted rugs and wall art. Sent us a photo, get back a piece of it in thread.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#catalogue">Catalogue</a>
+          <a href="#process">How it's made</a>
+        </div>
+        <div class="footer-col">
+          <h4>Order</h4>
+          <a href="https://www.instagram.com/ruglord.in" target="_blank" rel="noopener">DM on Instagram</a>
+          <a href="https://www.instagram.com/ruglord.in" target="_blank" rel="noopener">@ruglord.in</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Rug Lord</span>
+      <span>Made by hand. Shipped worldwide.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------
+   PRODUCT CATALOGUE
+   Add a new rug by copying an object below and editing it.
+   - image: path to a photo, e.g. "images/chipko.jpg"
+            (leave "" to show a placeholder swatch)
+   - price: shown as-is, so include the currency symbol
+--------------------------------------------------------- */
+const products = [
+  {
+    name: "Chipko Movement",
+    description: "A framed protest-art piece, hand-tufted in deep red and grey.",
+    price: "₹6,500",
+    image: "",
+    tag: "Wall art"
+  },
+  {
+    name: "Wedding Portrait Hanging",
+    description: "Custom couple portrait from your wedding photo, tufted on cream.",
+    price: "₹8,500",
+    image: "",
+    tag: "Custom portrait"
+  },
+  {
+    name: "Pet & Child Portrait",
+    description: "A dog and child rendered in black-and-white wool, made to hang.",
+    price: "₹7,000",
+    image: "",
+    tag: "Pet portrait"
+  },
+  {
+    name: "Charcoal Abstract Rug",
+    description: "A plush, low-pile floor rug in a soft abstract charcoal wash.",
+    price: "₹4,500",
+    image: "",
+    tag: "Floor rug"
+  },
+  {
+    name: "Traditional Couple Portrait",
+    description: "Two-tone portrait piece with fine detailing, tufted to order.",
+    price: "₹8,000",
+    image: "",
+    tag: "Custom portrait"
+  },
+  {
+    name: "Devotional Archer",
+    description: "A devotional figure in bold orange-on-black, wall-mounted.",
+    price: "₹5,500",
+    image: "",
+    tag: "Wall art"
+  }
+];
+
+function renderProducts() {
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = products.map(p => `
+    <div class="card">
+      <div class="card-media">
+        ${p.image
+          ? `<img src="${p.image}" alt="${p.name}">`
+          : `<span class="placeholder-tag">Add photo: ${p.tag}</span>`}
+      </div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="desc">${p.description}</p>
+        <div class="card-footer">
+          <span class="price">${p.price}</span>
+          <a class="enquire" href="https://www.instagram.com/ruglord.in" target="_blank" rel="noopener">Enquire</a>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+renderProducts();
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
